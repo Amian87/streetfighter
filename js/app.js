@@ -1,23 +1,22 @@
 $(document).ready(function() {
 
-	$('.ryu-standing').attr('src', '/images/ryu-ready-position.gif' />);
+	var ryu = '.ryu-standing'
+
+	$(ryu).append('<img src="/images/ryu-standing-still.png"/>');	
 	
-	$('.ryu-standing').click(function(){
-		$('.ryu-standing').removeAttr('<img src="/images/ryu-ready-position.gif" />');	
-		$(this).attr('<img src=/images/ryu-standing-still.png>')
-
-
+	$(ryu).mouseenter( function(){
+		$(this).removeAttr('img');	
+		$('.ryu-standing > img').attr('src','/images/ryu-ready-position.gif')		
 	});
 
+	$(ryu).mouseleave(function(){
+		$(this).removeAttr('img');	
+		$(this).html('<img src="/images/ryu-standing-still.png"/>')		
+	});
 
-
-
-
-
-
-
-
-
-
-
+	$(ryu).on('click', function(){
+		$(this).removeAttr('img');
+		$(this).html('<img src="/images/ryu-throwing-hadouken.png"/>')
+		$(this).attr('src', '/images/hadouken.gif')
+	});
 });
