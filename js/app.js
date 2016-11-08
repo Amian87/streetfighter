@@ -1,22 +1,29 @@
 $(document).ready(function() {
 
-	var ryu = '.ryu-standing'
-
-	$(ryu).append('<img src="/images/ryu-standing-still.png"/>');	
+	var ryu = '#ryu-fighting';
 	
-	$(ryu).mouseenter( function(){
-		$(this).removeAttr('img');	
-		$('.ryu-standing > img').attr('src','/images/ryu-ready-position.gif')		
+	$(ryu).html('<img src="/images/ryu-standing-still.png">');	
+
+	$(ryu).hover(function(){
+		
+		$(this).attr('src','/images/ryu-ready-position.gif');		
+		
+		
+
+	}, function(){
+
+		$(this).attr('src', '/images/ryu-standing-still.png');
+
 	});
 
-	$(ryu).mouseleave(function(){
-		$(this).removeAttr('img');	
-		$(this).html('<img src="/images/ryu-standing-still.png"/>')		
+	$(ryu).on('mousedown', function(){
+		// $(this).removeAttr('img');
+		// $(this).attr({src: '/images/ryu-throwing-hadouken.png'});
+		$('#hadouken').attr({src:'/images/hadouken.gif'});
 	});
 
-	$(ryu).on('click', function(){
-		$(this).removeAttr('img');
-		$(this).html('<img src="/images/ryu-throwing-hadouken.png"/>')
-		$(this).attr('src', '/images/hadouken.gif')
+	$(ryu).on('mouseup', function(){
+		$(this).attr('src', '/images/ryu-standing-still.png');
+		
 	});
 });
